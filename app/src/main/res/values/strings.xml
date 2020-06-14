@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Simple Timer</string>
+    <string name="channel_name">not c</string>
+    <string name="channel_description">notification for replace pump reserve</string>
+    <string name="appwidget_text">RESET</string>
+    <string name="add_widget">Add widget</string>
+</resources>
