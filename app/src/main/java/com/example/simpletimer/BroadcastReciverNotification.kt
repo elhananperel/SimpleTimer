@@ -16,19 +16,10 @@ class BroadcastReciverNotification : BroadcastReceiver() {
 
 
     companion object {
-        private const val TAG = "BroadcastService"
-        const val COUNTDOWN_BR = "com.eliperel.pumpsync.countdown_br"
         private const val CHANNEL_ID = "cd not";
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
-//        val text = "Hello toast!"
-//        val duration = Toast.LENGTH_LONG
-//
-//        val toast = Toast.makeText(context, text, duration)
-//        toast.show()
-
-
 
         var builder = NotificationCompat.Builder(context!!, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_local_pharmacy_black_24dp)

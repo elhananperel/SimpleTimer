@@ -54,7 +54,7 @@ public class ClickIntentService extends IntentService {
 
         Calendar cal = new GregorianCalendar();
         cal.setTimeInMillis(System.currentTimeMillis());
-        cal.add(Calendar.MINUTE, 1);
+        cal.add(Calendar.DAY_OF_YEAR, 4);
 
 
         assert alarmManager != null;
