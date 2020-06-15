@@ -12,7 +12,6 @@ import android.os.Build
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.util.Log
-import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -30,6 +29,62 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
+        val daysValues =
+            arrayOf("0 days", "1 days", "2 days", "3 days", "4 days", "5 days")
+
+        numberPicker_days.minValue = 0
+        numberPicker_days.maxValue = daysValues.size - 1
+        numberPicker_days.wrapSelectorWheel = false
+        numberPicker_days.displayedValues = daysValues
+
+        // Set number picker value changed listener
+        numberPicker_days.setOnValueChangedListener { picker, oldVal, newVal ->
+
+            //Display the newly selected number to text view
+            //text_view.text = "Selected Value : $newVal"
+        }
+
+        //////////////////////////////////////////////////////////////////////////////////////////////////
+        //val hoursValues =  arrayOf("0 hours")
+
+        val hoursValues = arrayOfNulls<String>(24)
+
+        for (i in hoursValues.indices) {
+            hoursValues[i] = "$i hours"
+        }
+
+        numberPicker_hours.minValue = 0
+        numberPicker_hours.maxValue = hoursValues.size - 1
+        numberPicker_hours.wrapSelectorWheel = false
+        numberPicker_hours.displayedValues = hoursValues
+
+        // Set number picker value changed listener
+        numberPicker_hours.setOnValueChangedListener { picker, oldVal, newVal ->
+
+            //Display the newly selected number to text view
+            //text_view.text = "Selected Value : $newVal"
+        }
+
+        //////////////////////////////////////////////////////////////
+        val minutesValues = arrayOfNulls<String>(60)
+
+        for (i in minutesValues.indices) {
+            minutesValues[i] = "$i minutes"
+        }
+
+        numberPicker_minutes.minValue = 0
+        numberPicker_minutes.maxValue = minutesValues.size - 1
+        numberPicker_minutes.wrapSelectorWheel = false
+        numberPicker_minutes.displayedValues = minutesValues
+
+        // Set number picker value changed listener
+        numberPicker_minutes.setOnValueChangedListener { picker, oldVal, newVal ->
+
+            //Display the newly selected number to text view
+            //text_view.text = "Selected Value : $newVal"
+        }
 
         createNotificationChannel()
         // SQLite database handler
