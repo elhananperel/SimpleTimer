@@ -24,9 +24,23 @@ class SharedPreferenceTime(var _context: Context) {
             "time update ! : $time"
         )
     }
+    fun setLength(length: Long) {
+        editor.putLong(KEY_LENGTH, length)
+
+        // commit changes
+        editor.commit()
+        Log.d(
+            TAG,
+            "time update ! : $length"
+        )
+    }
 
     val getTime: Long
         get() = pref.getLong(KEY_TIME, -1L)
+
+    val getlength: Long
+        get() = pref.getLong(KEY_LENGTH, 345600000)
+
 
     companion object {
         // LogCat tag
@@ -35,6 +49,7 @@ class SharedPreferenceTime(var _context: Context) {
         // Shared preferences file name
         private const val PREF_NAME = "AndroidHiveLogin"
         private const val KEY_TIME = "time"
+        private const val KEY_LENGTH = "length"
     }
 
     init {

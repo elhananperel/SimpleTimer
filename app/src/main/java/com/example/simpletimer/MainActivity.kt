@@ -20,7 +20,10 @@ import java.util.*
 class MainActivity : AppCompatActivity() {
 
 
-    private val REQUEST_CODE = 100
+    private val REQUESTCODE = 100
+    private var days = 4;
+    private var hours = 0;
+    private var minutes = 0;
     private lateinit var alarmManager: AlarmManager
     private lateinit var pendingIntent: PendingIntent
     private lateinit var cdTimer: CountDownTimer
@@ -31,19 +34,21 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-        val daysValues =
-            arrayOf("0 days", "1 days", "2 days", "3 days", "4 days", "5 days")
+        val daysValues = arrayOfNulls<String>(31)
+
+        for (i in daysValues.indices) {
+            daysValues[i] = "$i days"
+        }
 
         numberPicker_days.minValue = 0
         numberPicker_days.maxValue = daysValues.size - 1
+        numberPicker_days.value = 4
         numberPicker_days.wrapSelectorWheel = false
         numberPicker_days.displayedValues = daysValues
 
         // Set number picker value changed listener
         numberPicker_days.setOnValueChangedListener { picker, oldVal, newVal ->
-
-            //Display the newly selected number to text view
-            //text_view.text = "Selected Value : $newVal"
+            days = newVal
         }
 
         //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -62,9 +67,7 @@ class MainActivity : AppCompatActivity() {
 
         // Set number picker value changed listener
         numberPicker_hours.setOnValueChangedListener { picker, oldVal, newVal ->
-
-            //Display the newly selected number to text view
-            //text_view.text = "Selected Value : $newVal"
+            hours = newVal
         }
 
         //////////////////////////////////////////////////////////////
@@ -81,9 +84,7 @@ class MainActivity : AppCompatActivity() {
 
         // Set number picker value changed listener
         numberPicker_minutes.setOnValueChangedListener { picker, oldVal, newVal ->
-
-            //Display the newly selected number to text view
-            //text_view.text = "Selected Value : $newVal"
+            minutes = newVal
         }
 
         createNotificationChannel()
@@ -97,6 +98,9 @@ class MainActivity : AppCompatActivity() {
 
 
             session.setTime(System.currentTimeMillis())
+            var lengthMinutes = days*24*60 + hours*60 + minutes
+            var lengthTimeLong = days*24*60*60*1000L + hours*60*60*1000L + minutes*60*1000L
+            session.setLength(lengthTimeLong)
             updateTime();
 
             // Creating the pending intent to send to the BroadcastReceiver
@@ -104,7 +108,7 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, BroadcastReciverNotification::class.java)
             pendingIntent = PendingIntent.getBroadcast(
                 this,
-                REQUEST_CODE,
+                REQUESTCODE,
                 intent,
                 PendingIntent.FLAG_UPDATE_CURRENT
             )
@@ -112,7 +116,7 @@ class MainActivity : AppCompatActivity() {
             // Setting the specific time for the alarm manager to trigger the intent,
             val calendar = Calendar.getInstance()
             calendar.timeInMillis = System.currentTimeMillis()
-            calendar.add(Calendar.MINUTE, 1)
+            calendar.add(Calendar.MINUTE, lengthMinutes)
 
 
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
@@ -139,6 +143,7 @@ class MainActivity : AppCompatActivity() {
     private fun updateTime() {
         var session = SharedPreferenceTime(applicationContext)
         var startMS = session.getTime
+        var lengthTime = session.getlength
         if (startMS != -1L) {
 
             var timeElapsed = System.currentTimeMillis() - startMS;
@@ -147,7 +152,7 @@ class MainActivity : AppCompatActivity() {
                 "timeElapsed ! : $timeElapsed"
             )
 
-            var timeRemains = 345600000 - timeElapsed;
+            var timeRemains = lengthTime - timeElapsed;
 
             Log.d(
                 TAG,

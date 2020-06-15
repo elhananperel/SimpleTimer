@@ -32,8 +32,8 @@ class BroadcastReciverNotification : BroadcastReceiver() {
 
         var builder = NotificationCompat.Builder(context!!, CHANNEL_ID)
             .setSmallIcon(R.drawable.ic_local_pharmacy_black_24dp)
-            .setContentTitle("gggggggggggggggg")
-            .setContentText("gggggggggggge dgr ")
+            .setContentTitle("Reminder!")
+            .setContentText("Timer finished!")
             .setPriority(NotificationCompat.PRIORITY_DEFAULT)
 
         with(NotificationManagerCompat.from(context)) {
