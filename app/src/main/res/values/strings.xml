@@ -4,4 +4,11 @@
     <string name="channel_description">notification for replace pump reserve</string>
     <string name="appwidget_text">RESET</string>
     <string name="add_widget">Add widget</string>
+    <string name="days">days</string>
+    <string name="huors">hours</string>
+    <string name="minutes">minutes</string>
+    <string name="seconds">seconds</string>
+    <string name="finish">Finish</string>
+    <string name="timer_finishd">Timer finishd</string>
+
 </resources>

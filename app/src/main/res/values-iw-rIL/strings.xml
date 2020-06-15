@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">טיימר</string>
+    <string name="channel_name">not c</string>
+    <string name="channel_description">notification for replace pump reserve</string>
+    <string name="appwidget_text">אפס מחדש</string>
+    <string name="add_widget">הוסף יישומון</string>
+    <string name="days">ימים</string>
+    <string name="huors">שעות</string>
+    <string name="minutes">דקות</string>
+    <string name="seconds">שניות</string>
+    <string name="finish">הסתיים</string>
+    <string name="timer_finishd">טיימר סיים</string>
+</resources>

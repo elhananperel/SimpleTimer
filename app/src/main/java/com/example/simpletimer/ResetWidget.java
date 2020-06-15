@@ -1,19 +1,12 @@
 package com.example.simpletimer;
 
-import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.util.Log;
 import android.widget.RemoteViews;
-
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-
-import static android.content.Context.MODE_PRIVATE;
 
 /**
  * Implementation of App Widget functionality.
@@ -36,9 +29,8 @@ public class ResetWidget extends AppWidgetProvider {
         intent.setAction(ClickIntentService.ACTION_CLICK);
         PendingIntent pendingIntent = PendingIntent.getService(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 
-        views.setOnClickPendingIntent(R.id.appwidget_text, pendingIntent);
+        views.setOnClickPendingIntent(R.id.appwidget_button, pendingIntent);
 
-        int clicks = context.getSharedPreferences("sp", MODE_PRIVATE).getInt("clicks", 0);
 
         //views.setTextViewText(R.id.appwidget_text, String.valueOf(clicks));
 

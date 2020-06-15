@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         val daysValues = arrayOfNulls<String>(31)
 
         for (i in daysValues.indices) {
-            daysValues[i] = "$i days"
+            daysValues[i] = "$i " +getString(R.string.days)
         }
 
         numberPicker_days.minValue = 0
@@ -57,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         val hoursValues = arrayOfNulls<String>(24)
 
         for (i in hoursValues.indices) {
-            hoursValues[i] = "$i hours"
+            hoursValues[i] = "$i " + getString(R.string.huors)
         }
 
         numberPicker_hours.minValue = 0
@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity() {
         val minutesValues = arrayOfNulls<String>(60)
 
         for (i in minutesValues.indices) {
-            minutesValues[i] = "$i minutes"
+            minutesValues[i] = "$i " +getString(R.string.minutes)
         }
 
         numberPicker_minutes.minValue = 0
@@ -175,7 +175,7 @@ class MainActivity : AppCompatActivity() {
                     val days = (millisUntilFinished / (1000 * 60 * 60 * 24))
 
                     textView.text =
-                        "" + days + " ימים " + hours + "  שעות " + minutes + " דקות " + seconds + " שניות "
+                        "" + days + " "+getString(R.string.days) +  " " + hours + " "+getString(R.string.huors) +  " " + minutes + " "+getString(R.string.minutes) +  " " + seconds + " "+getString(R.string.seconds)
                 }
 
                 override fun onFinish() {

@@ -45,6 +45,8 @@ public class ClickIntentService extends IntentService {
         Log.i(TAG,"ClickIntentService : handleClick");
         SharedPreferenceTime session = new SharedPreferenceTime(getApplicationContext());
         session.setTime(System.currentTimeMillis());
+        session.setLength(345600000L);
+
 
         AlarmManager alarmManager = (AlarmManager) getApplicationContext().getSystemService(Context.ALARM_SERVICE);
         Intent i = new Intent(getApplicationContext(), BroadcastReciverNotification.class);
