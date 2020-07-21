@@ -36,4 +36,6 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     compile 'com.github.markushi:circlebutton:1.1'
     implementation 'androidx.core:core:1.0.0'
+    implementation 'com.eightbitlab:blurview:1.6.3'
+    implementation 'com.github.mmin18:realtimeblurview:1.2.1'
 }
