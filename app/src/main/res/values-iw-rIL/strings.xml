@@ -11,4 +11,5 @@
     <string name="seconds">שניות</string>
     <string name="finish">הסתיים</string>
     <string name="timer_finishd">טיימר סיים</string>
+    <string name="timer_added">טיימר נקבע!</string>
 </resources>

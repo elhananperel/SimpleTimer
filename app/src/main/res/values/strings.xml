@@ -10,5 +10,7 @@
     <string name="seconds">seconds</string>
     <string name="finish">Finish</string>
     <string name="timer_finishd">Timer finishd</string>
+    <string name="timer_added">Timer scheduled!</string>
+    timer_added
 
 </resources>

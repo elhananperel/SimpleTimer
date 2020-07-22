@@ -9,6 +9,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.Context;
 import android.os.Build;
+import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -18,7 +19,7 @@ import java.util.GregorianCalendar;
 public class ClickIntentService extends IntentService {
     private static final String TAG = "timer_i";
     public static final String ACTION_CLICK = "com.eliperel.pumpsync.widgets.click";
-
+    private Handler handler = new Handler();
     public ClickIntentService() {
         super("ClickIntentService");
     }
@@ -30,6 +31,15 @@ public class ClickIntentService extends IntentService {
 
             if (ACTION_CLICK.equals(action)) {
                 handleClick();
+                handler.post(new Runnable()
+                {
+                    //      @Override
+                    public void run()
+                    {
+                        Toast.makeText(getApplicationContext(), getString(R.string.timer_added),
+                                Toast.LENGTH_SHORT).show();
+                    }
+                });    // Display toast and exit
             }
         }
     }
@@ -43,6 +53,7 @@ public class ClickIntentService extends IntentService {
 //                .commit();
 
         Log.i(TAG,"ClickIntentService : handleClick");
+
         SharedPreferenceTime session = new SharedPreferenceTime(getApplicationContext());
         session.setTime(System.currentTimeMillis());
         session.setLength(345600000L);
@@ -73,5 +84,6 @@ public class ClickIntentService extends IntentService {
         for (int appWidgetId : widgetIds) {
             ResetWidget.updateAppWidget(getApplicationContext(), appWidgetManager, appWidgetId);
         }
+
     }
 }

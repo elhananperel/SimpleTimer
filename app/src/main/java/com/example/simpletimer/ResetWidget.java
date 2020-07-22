@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 import android.widget.RemoteViews;
+import android.widget.Toast;
 
 /**
  * Implementation of App Widget functionality.
@@ -18,8 +19,7 @@ public class ResetWidget extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-        Log.i(TAG,"ResetAppWidget : updateAppWidget");
-
+        Log.i(TAG, "ResetAppWidget : updateAppWidget");
 
 
         // Construct the RemoteViews object
@@ -50,9 +50,18 @@ public class ResetWidget extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         // There may be multiple widgets active, so update all of them
+        Log.i(TAG, "onUpdate");
         for (int appWidgetId : appWidgetIds) {
+            Log.i(TAG, "onUpdate appWidgetId : " + appWidgetId);
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
+    }
+
+
+    @Override
+    public void onReceive(Context context, Intent intent) {
+        Log.i(TAG, "onReceive");
+        super.onReceive(context, intent);
     }
 
     @Override
